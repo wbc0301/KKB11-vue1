@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <item class="item" :model="treeData"></item>
+      <item class="item" v-for="model in treeData" :model="model"></item>
     </ul>
   </div>
 </template>
@@ -9,10 +9,10 @@
 <script>
 import Item from "./Item";
 export default {
-  name: "app",
+  name: "Tree",
   data() {
     return {
-      treeData: {
+      treeData: [{
         title: "Web全栈架构师",
         children: [
           {
@@ -64,7 +64,10 @@ export default {
             ]
           }
         ]
-      }
+      },
+      {
+        title:'wbc添加的title'
+      }]
     };
   },
   components: { Item }

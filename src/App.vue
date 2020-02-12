@@ -5,7 +5,7 @@
     <!-- <SlotsTest></SlotsTest> -->
     <!-- <Recursion></Recursion> -->
     <FormSample></FormSample>
-    <!-- <Tree></Tree> -->
+    <Tree></Tree>
   </div>
 </template>
 

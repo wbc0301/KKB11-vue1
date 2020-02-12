@@ -18,5 +18,7 @@ export default function create(Component, props) {
         document.body.removeChild(vm.$el);
         vm.$destroy();
     }
+    console.log(vm); // Vue instance
+    console.log(comp); // VueComponents instance
     return comp;
 }
