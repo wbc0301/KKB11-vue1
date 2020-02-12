@@ -19,6 +19,6 @@ export default function create(Component, props) {
         vm.$destroy();
     }
     console.log(vm); // Vue instance
-    console.log(comp); // VueComponents instance
+    console.log(comp); // VueComponent instance
     return comp;
 }
