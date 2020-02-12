@@ -1,14 +1,24 @@
 <template>
   <div id="app">
-    <router-link to="/">home</router-link>
-    <router-link to="/about">about</router-link>
-    <router-view></router-view>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <CompCommunicate /> --> 
     <!-- <SlotsTest></SlotsTest> -->
     <!-- <Recursion></Recursion> -->
     <FormSample></FormSample>
     <Tree></Tree>
+
+    <!-- router -->
+    <router-link to="/">home</router-link>
+    <router-link to="/about">about</router-link>
+    <router-view></router-view>
+
+    <!-- vuex -->
+    <div>{{$store.state.count}}</div>
+    <button @click="$store.commit('increment', 3)">加</button><br>
+    <button @click="$store.dispatch('incrementAsync', 3)">加加</button>
+
+
+
   </div>
 </template>
 
