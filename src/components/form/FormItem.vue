@@ -26,7 +26,10 @@ export default {
     };
   },
   mounted() {
-      this.$on('validate', this.validate)
+    // this.$on('validate', this.validate()); // validate返回一个promise，$on回调没有处理返回值，所以vue会警告  
+      this.$on('validate', () => {
+        this.validate();
+      })
   },
   methods: {
       validate() {

@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <router-link to="/">home</router-link>
+    <router-link to="/about">about</router-link>
+    <router-view></router-view>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <CompCommunicate /> --> 
     <!-- <SlotsTest></SlotsTest> -->

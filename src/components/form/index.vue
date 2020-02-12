@@ -14,6 +14,10 @@
       <k-form-item>
         <button @click="submitForm('loginForm')">提交</button>
       </k-form-item>
+
+      <k-form-item>
+        abc
+      </k-form-item>
     
     </k-form>
     <!-- {{model}} -->
