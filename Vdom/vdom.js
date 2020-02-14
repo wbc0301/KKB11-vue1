@@ -89,7 +89,6 @@ function patchData(el, key, prevValue, nextValue) {
   }
 }
 
-
 function render(vnode, container) {
   const prevVNode = container.vnode
   if (prevVNode == null) {
