@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <!-- <CompCommunicate /> --> 
-    <!-- <SlotsTest></SlotsTest> -->
+    <!-- <Communicate /> --> 
     <!-- <Recursion></Recursion> -->
     <FormSample></FormSample>
     <Tree></Tree>
@@ -17,15 +15,11 @@
     <button @click="$store.commit('increment', 3)">加</button><br>
     <button @click="$store.dispatch('incrementAsync', 3)">加加</button>
 
-
-
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import CompCommunicate from "./components/communicate";
-import SlotsTest from "./components/slots";
+import Communicate from "./components/communicate";
 import Recursion from "./components/recursion";
 import FormSample from "./components/form";
 import Tree from "./components/tree";
@@ -33,9 +27,7 @@ import Tree from "./components/tree";
 export default {
 	name: "app",
 	components: {
-		HelloWorld,
-		CompCommunicate,
-		SlotsTest,
+		Communicate,
 		Recursion,
 		FormSample,
 		Tree

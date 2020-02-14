@@ -1,9 +1,10 @@
 import Vue from "vue";
 import App from "./App.vue";
-import create from "@/utils/create";
+import create from "@/utils/create"; // notice组件
 
-import router from './krouter';
-import store from './kstore'
+import router from './router'; // vue-router 实现
+import store from './store'    // vuex 实现
+
 
 Vue.config.productionTip = false;
 

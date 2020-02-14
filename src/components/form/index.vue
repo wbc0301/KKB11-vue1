@@ -8,7 +8,8 @@
       </k-form-item>
 
       <k-form-item label="确认密码" prop="password">
-        <k-input type="password" v-model="model.password" autocomplete="off"></k-input>
+        <!-- v-model语法糖被还原后的写法  效果是一样一样的 -->
+        <k-input type="password" :value="model.password" @input="value => model.password = value" autocomplete="off"></k-input>
       </k-form-item>
 
       <k-form-item>
@@ -50,6 +51,7 @@ export default {
     submitForm(form) {
       this.$refs[form].validate(valid => {
 
+        // 测试 notice组件
         const notice = this.$create(Notice, {
           title: "社会你杨哥喊你来搬砖",
           message: valid ? "请求登录!" : "校验失败!",
