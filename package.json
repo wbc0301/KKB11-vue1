@@ -10,6 +10,8 @@
   "dependencies": {
     "async-validator": "^1.11.2",
     "core-js": "^2.6.5",
+    "element-ui": "^2.13.0",
+    "js-cookie": "^2.2.1",
     "vue": "^2.6.10",
     "vue-router": "^3.1.5",
     "vuex": "^3.1.2"

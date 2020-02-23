@@ -1,14 +1,19 @@
 import Vue from "vue";
 import App from "./App.vue";
-import create from "@/utils/create"; // notice组件
+// import create from "@/utils/create"; // notice组件
 
 import router from './router'; // vue-router 实现
 import store from './store'    // vuex 实现
 
 
+import "./plugins/element.js";
+
+import "./permission"; // 路由守卫
+
+
 Vue.config.productionTip = false;
 
-Vue.prototype.$dispatch = function(eventName, data) {
+/* Vue.prototype.$dispatch = function(eventName, data) {
   let parent = this.$parent;
   // 查找父元素
   while (parent) {
@@ -58,7 +63,7 @@ class Bus {
 }
 
 Vue.prototype.$bus = new Bus();
-Vue.prototype.$create = create;
+Vue.prototype.$create = create; */
 
 new Vue({
   router,
