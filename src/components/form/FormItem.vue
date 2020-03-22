@@ -7,10 +7,13 @@
   </div>
 </template>
 
-<script>
+<script>   
+// FormItem组件的作用：
+// 1：完成校验
+// 2：错误信息的展示
 import Schema from 'async-validator'
 export default {
-	inject: ["form"], // 接收数据
+	inject: ["form"], // 接收数据  model rules
 	props: {
 		label: {
 			type: String,
@@ -32,13 +35,13 @@ export default {
 		})
 	},
 	methods: {
-		validate() {// 做校验
+		validate() { // 校验
 			const value = this.form.model[this.prop] // 获取校验值和校验规则
 			const rules = this.form.rules[this.prop] // {username: [{ required: true, message: "请输入用户名" }], ...}
 			// npm i async-validator -S
 			const desc = { [this.prop]: rules };
 			const schema = new Schema(desc);
-			// return的是校验结果的Promise
+			// return的是校验结果的 Promise
 			return schema.validate({ [this.prop]: value }, errors => {
 				if (errors) {
 					this.errorMessage = errors[0].message;

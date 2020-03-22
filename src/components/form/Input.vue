@@ -5,6 +5,10 @@
 </template>
 
 <script>
+// Input组件的作用：
+// 当数据改变时
+// 1：把值传给爷组件  
+// 2：让父组件校验数据
 export default {
 	inheritAttrs: false, //子组件没有接收的props将会作为子组件跟元素的原生HTML属性，false可以把这些属性取消掉。
 	props: {

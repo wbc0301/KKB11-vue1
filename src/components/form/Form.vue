@@ -4,9 +4,12 @@
   </div>
 </template>
 
-<script>
+<script> 
+// Form组件的作用：
+// 1：给子组件传递数据
+// 2：提供全局校验方法
 export default {
-	provide() { // 给所有的子孙组件传递数据
+	provide() { // 给所有的子孙组件传递数据 model rules
 		return {
 			form: this
 		};

@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <!-- <Communicate /> --> 
+    <!-- <Communicate />  -->
     <!-- <Recursion></Recursion> -->
-    <!-- <FormSample></FormSample>
-    <Tree></Tree> -->
+    <FormSample></FormSample>
+    <Tree></Tree>
 
     <!-- router -->
     <router-link to="/">home</router-link>
@@ -20,16 +20,16 @@
 <script>
 // import Communicate from "./components/communicate";
 // import Recursion from "./components/recursion";
-// import FormSample from "./components/form";
-// import Tree from "./components/tree";
+import FormSample from "./components/form";
+import Tree from "./components/tree";
 
 export default {
 	name: "app",
 	components: {
 		// Communicate,
 		// Recursion,
-		// FormSample,
-		// Tree
+		FormSample,
+		Tree
 	},
 	data() {
 		return {
