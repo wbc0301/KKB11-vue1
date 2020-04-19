@@ -3,17 +3,14 @@
     <label v-if="label">{{label}}</label>
     <slot></slot>
     <span v-if="errorMessage" style="color:red;font-size: 12px;">{{errorMessage}}</span>
-    <!-- {{form.rules}} -->
   </div>
 </template>
 
 <script>   
-// FormItem组件的作用：
-// 1：完成校验
-// 2：错误信息的展示
+// FormItem作用： 1：定义校验函数    2：错误信息的展示
 import Schema from 'async-validator'
 export default {
-	inject: ["form"], // 接收数据  model rules
+	inject: ["form"], // 注入
 	props: {
 		label: {
 			type: String,
@@ -29,19 +26,18 @@ export default {
 		};
 	},
 	mounted() {
-		// this.$on('validate', this.validate()); // validate返回一个promise，$on回调没有处理返回值，所以vue会警告  
 		this.$on('validate', () => {
-			this.validate();
+      this.validate();
+      this.$parent.$emit('validate') // 触发父组件的validate事件
 		})
 	},
 	methods: {
 		validate() { // 校验
-			const value = this.form.model[this.prop] // 获取校验值和校验规则
-			const rules = this.form.rules[this.prop] // {username: [{ required: true, message: "请输入用户名" }], ...}
-			// npm i async-validator -S
-			const desc = { [this.prop]: rules };
-			const schema = new Schema(desc);
-			// return的是校验结果的 Promise
+			const value = this.form.model[this.prop] // "tom"
+			const rules = this.form.rules[this.prop] // [{ required: true, message: "请输入用户名" }]
+			const descriptionObj = { [this.prop]: rules }; // {username: [{ required: true, message: "请输入用户名" }]}
+			const schema = new Schema(descriptionObj); // npm i async-validator -S
+			// return Promise        {username: "tom"}     
 			return schema.validate({ [this.prop]: value }, errors => {
 				if (errors) {
 					this.errorMessage = errors[0].message;
@@ -53,6 +49,3 @@ export default {
 	},
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

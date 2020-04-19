@@ -7,6 +7,7 @@
 let Vue = null;
 class Store {
   constructor(options) {
+    
     this.state = new Vue({
       data: options.state
     });
@@ -20,10 +21,7 @@ class Store {
   };
 
   dispatch(type, arg) {     // 实现actions
-    this.actions[type]({
-      commit: this.commit,
-      state: this.state
-    }, arg);
+    this.actions[type]({ commit: this.commit, state: this.state }, arg);
   }
 
   handleGetters(getters) {

@@ -1,69 +1,18 @@
 import Vue from "vue";
 import App from "./App.vue";
-// import create from "@/utils/create"; // notice组件
+import create from "@/utils/create"; // notice组件
 
-import router from './router'; // vue-router 实现
-import store from './store'    // vuex 实现
+import router from './router.js';
+import store from './store.js';
+console.log(router)
+console.log(store)
 
+// import "./plugins/element.js";
 
-import "./plugins/element.js";
+Vue.config.productionTip = false; // 设置为 false 以阻止 vue 在启动时生成生产提示。
 
-import "./permission"; // 路由守卫
+Vue.prototype.$create = create; // 全局实例方法
 
-
-Vue.config.productionTip = false;
-
-/* Vue.prototype.$dispatch = function(eventName, data) {
-  let parent = this.$parent;
-  // 查找父元素
-  while (parent) {
-    if (parent) {
-      // 父元素用$emit触发
-      parent.$emit(eventName, data);
-      // 递归查找父元素
-      parent = parent.$parent;
-    } else {
-      break;
-    }
-  }
-};
-
-Vue.prototype.$boardcast = function(eventName, data) {
-  boardcast.call(this, eventName, data);
-};
-function boardcast(eventName, data) {
-  this.$children.forEach(child => {
-    // 子元素触发$emit
-    child.$emit(eventName, data);
-    if (child.$children.length) {
-      // 递归调用，通过call修改this指向 child
-      boardcast.call(child, eventName, data);
-    }
-  });
-}
-
-class Bus {
-  constructor() {
-    // {
-    //   eventName1:[fn1,fn2],
-    //   eventName2:[fn3,fn4],
-    // }
-    this.callbacks = {};
-  }
-  $on(name, fn) {
-    this.callbacks[name] = this.callbacks[name] || [];
-    this.callbacks[name].push(fn);
-  }
-  $emit(name, args) {
-    if (this.callbacks[name]) {
-      // 存在 遍历所有callback
-      this.callbacks[name].forEach(cb => cb(args));
-    }
-  }
-}
-
-Vue.prototype.$bus = new Bus();
-Vue.prototype.$create = create; */
 
 new Vue({
   router,

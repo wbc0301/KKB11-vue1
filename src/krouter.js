@@ -5,8 +5,6 @@
   3：路由配置解析：   {'/': Home}
   4: 实现全局组件：<router-link> <router-view>
 */
-
-// 创建 router插件   Vue插件必须有一个 install 方法
 let Vue = null;
 class VueRouter {
   constructor(options) {
@@ -19,34 +17,31 @@ class VueRouter {
     });
   }
 
-  init() {
-    this.bindEvents();    //监听url变化
-    this.createRouteMap(this.$options); //解析路由配置
-    this.initComponent(); // 实现两个组件
+  _init() {
+    this._bindEvents();
+    this._createRouteMap(this.$options);
+    this._initComponent();
   }
 
-  bindEvents() {  // 监听URL变化
-    window.addEventListener("load", this.onHashChange.bind(this));
-    window.addEventListener("hashchange", this.onHashChange.bind(this));
+  _bindEvents() {  // 监听URL变化
+    window.addEventListener("load", this._onHashChange.bind(this));
+    window.addEventListener("hashchange", this._onHashChange.bind(this));
   }
-  onHashChange() { // hashchange是改变current
+  _onHashChange() { // hashchange 是改变 current
     this.app.currentUrl = window.location.hash.slice(1) || "/";
   }
-  createRouteMap(options) {
+  _createRouteMap(options) { // 解析路由配置
     options.routes.forEach(item => {
       this.routeMap[item.path] = item.component;
     });
   }
-  initComponent() { // <router-link to="">fff</router-link>
+  _initComponent() {  // 实现两个全局组件  <router-link to="">fff</router-link>
     Vue.component("router-link", {
       props: { to: String },
-      render(h) { // h(tag, data, children)
-        return h("a", { attrs: { href: "#" + this.to } }, [
-          this.$slots.default
-        ]);
+      render(h) { // h(tag, data, children) // 没有编译器，所有不能写成template
+        return h("a", { attrs: { href: "#" + this.to } }, [this.$slots.default]);
       }
     });
-
     Vue.component("router-view", {
       render: h => {
         const comp = this.routeMap[this.app.currentUrl];
@@ -56,13 +51,13 @@ class VueRouter {
   }
 }
 
-VueRouter.install = function (vue) {
+VueRouter.install = function (vue) { // Vue插件必须有一个 install 方法
   Vue = vue;
-  Vue.mixin({  // 混入
+  vue.mixin({
     beforeCreate() {
-      if (this.$options.router) { // this是 Vue实例  （不是 VueComponent 的实例） 仅在根组件执行一次
-        Vue.prototype.$router = this.$options.router;
-        this.$options.router.init();
+      if (this.$options.router) { // this是Vue实例  （不是 VueComponent 的实例） 仅在根组件执行一次
+        vue.prototype.$router = this.$options.router;
+        this.$options.router._init();
       }
     }
   });

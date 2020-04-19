@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h3>Element表单</h3><hr>
-    <k-form :model="model" :rules="rules" ref="loginForm">
+    <h3>Element表单1</h3><hr>
+    <k-form :model="model" :rules="rules" ref="loginForm"  @validate="validate">
 
       <k-form-item label="用户名" prop="username">
         <k-input v-model="model.username" autocomplete="off" placeholder="输入用户名"></k-input>
@@ -50,7 +50,6 @@ export default {
   methods: {
     submitForm(form) {
       this.$refs[form].validate(valid => {
-
         // 测试 notice组件
         const notice = this.$create(Notice, {
           title: "社会你杨哥喊你来搬砖",
@@ -58,14 +57,10 @@ export default {
           duration: 3000
         });
         notice.show();
-
-        // if(valid) {
-        //   alert('登录成功');
-        // }else {
-        //   alert('登录失败');
-        // }
-
       });
+    },
+    validate() {
+      console.log('任一表单项被校验后触发');
     }
   }
 };
